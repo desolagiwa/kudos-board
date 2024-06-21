@@ -10,6 +10,7 @@ const { Prisma } = require('@prisma/client')
 
 app.use(express.json())
 
+app.use(cors())
 app.use('/boards', boardRoutes)
 
 
