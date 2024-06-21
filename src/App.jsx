@@ -7,7 +7,6 @@ import BoardListPage from './pages/BoardListPage'
 import CardListPage from './pages/CardListPage'
 
 function App() {
-  // const []
 
 
   return (

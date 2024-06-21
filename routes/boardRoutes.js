@@ -63,11 +63,20 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const { id } = req.params
-    const deletedBoard = await prisma.Board.delete({
-      where: { id: parseInt(id) }
-    })
-    res.json(deletedBoard)
+    try {
+      await prisma.Card.deleteMany({
+        where: { boardId: parseInt(id) }
+      })
+
+      const deletedBoard = await prisma.Board.delete({
+        where: { id: parseInt(id) }
+      })
+      res.json(deletedBoard)
+    } catch(error) {
+      res.status(500).json({ error: 'Failed to delete board' })
+    }
   })
+
 
 router.use('/cards', cardRoutes)
 

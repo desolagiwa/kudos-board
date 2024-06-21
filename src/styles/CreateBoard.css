@@ -1,18 +1,34 @@
 .new-board-form{
     color: black;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #f4f4f4;
-
-    /* background-size: cover;
-    background-position: center;
-    background-blend-mode: multiply;
-    text-shadow: 0 0 10px rgba(0, 0, 0,200); */
     border: 1px solid #888;
     padding: 20px;
-    width: 50%;
     z-index: 1000;
     box-shadow:  0 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: scroll;
+    overflow-y: auto;
+}
+.close-btn{
+    justify-self: end;
+}
+label{
+    display: block;
+    font-size: large;
+    text-align: start;
+}
+input{
+    display: block;
+    justify-self: center;
+    width: 400px;
+    height: 40px;
+    font-size: larger;
+}
+select{
+    width: 310px;
+    margin: 10px 20px;
+    height: 40px;
 }

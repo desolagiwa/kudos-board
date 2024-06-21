@@ -4,12 +4,13 @@ import Board from "./Board";
 import '../styles/BoardList.css'
 
 
-const BoardList = (props) => {
-    const data = props.data
+const BoardList = ({data, fetchBoardList}) => {
+    const [boards, setBoards] = useState([])
+
     return (
         <div className="board-list">
             {data.map(board  => (
-              <Board title={board.title} description={board.rating} image={board.image} author={board.author} id={board.id}/>
+              <Board key={board.id} title={board.title} description={board.rating} image={board.image} author={board.author} id={board.id} fetchBoardList={fetchBoardList}/>
             ))}
         </div>
     )

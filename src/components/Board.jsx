@@ -6,19 +6,44 @@ import { BrowserRouter as Router, Routes, Route, useNavigate, Link} from 'react-
 
 
 
-const Board = (props) => {
+const Board = ({title, description, image, author, id, fetchBoardList}) => {
     const [error, setError] = useState(null)
 
+    const deleteBoard = async (id) => {
+        try {
+          const response = await fetch(`http://localhost:5000/boards/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          if (response.ok) {
+            console.log(id, "has been deleted")
+          } else {
+            console.error('Error deleting board');
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+    const onDelete = (event) => {
+      event.preventDefault()
+      deleteBoard(id)
+      fetchBoardList()
+
+    }
 
     return (
         <div className="board">
-            <img className='image' src={props.image} alt={props.description}/>
-            <div className='title'>{props.title}</div>
-            <div className='description'>{props.description}</div>
-            <div className='author'>{props.author}</div>
-            <Link to={`/boards/${props.id}/cards`}>
+            <img className='image' src={image} alt={description} style={{width: "400px",height: "400px",}}/>
+            <div className='title'>{title}</div>
+            <div className='description'>{description}</div>
+            <div className='author'>by {author}</div>
+            <Link to={`/boards/${id}/cards`}>
               <button>View</button>
             </Link>
+            <button onClick={onDelete}>Delete</button>
         </div>
     )
 }

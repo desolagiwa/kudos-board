@@ -51,7 +51,7 @@ router.post('/:boardId/', async (req,res) => {
     res.json(newCard)
 })
 
-router.put('/:boardId/:cardId', async (req,res) => {
+router.patch('/:boardId/:cardId', async (req,res) => {
     const boardId = parseInt(req.params.boardId)
     const cardId = parseInt(req.params.cardId)
     const {title, description, gif, upvotes} = req.body

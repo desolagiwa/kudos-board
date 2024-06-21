@@ -1,12 +1,12 @@
 import React from "react";
 import Card from './Card'
+import '../styles/CardList.css'
 
-const CardList = (props) => {
-    const data = props.data
+const CardList = ({data, fetchBoardData, boardId}) => {
     return (
         <div className="card-list">
             {data.map(card  => (
-              <Card title={card.title} description={card.rating} gif={card.gif} upvotes={card.upvotes} id={card.id}/>
+              <Card title={card.title} description={card.rating} gif={card.gif} upvotes={card.upvotes} id={card.id} fetchBoardData={fetchBoardData} boardId={boardId}/>
             ))}
         </div>
     )

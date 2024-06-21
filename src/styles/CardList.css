@@ -1,6 +1,5 @@
-.board-list{
+.card-list{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    row-gap: 10px;
 }

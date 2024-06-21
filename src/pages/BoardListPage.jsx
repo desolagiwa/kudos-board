@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import '../styles/App.css'
+import '../styles/BoardListPage.css'
 import BoardList from '../components/BoardList'
 import CreateBoard from '../components/CreateBoard'
 
 function BoardListPage() {
-  const [count, setCount] = useState(0)
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [boardList, setBoardList] = useState([])
   const [error, setError] = useState(null);
@@ -56,8 +55,8 @@ function BoardListPage() {
    <>
         <header>
           <h1>KUDOS BOARD</h1>
-          <form>
-            <input type="text" placeholder="Search" />
+          <form >
+            <input className='search-bar' type="text" placeholder="Search" />
           </form>
         </header>
         <main>
@@ -74,7 +73,7 @@ function BoardListPage() {
           )}
           {boardList !== null ? (
               <>
-                <BoardList data={boardList} />
+                <BoardList data={boardList} fetchBoardList={fetchBoardList}/>
               </>
             ) : (
               <div>Loading...</div>
