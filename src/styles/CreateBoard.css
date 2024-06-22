@@ -23,12 +23,12 @@ label{
 input{
     display: block;
     justify-self: center;
-    width: 400px;
+    width: 690px;
     height: 40px;
     font-size: larger;
 }
 select{
-    width: 310px;
+    width: 595px;
     margin: 10px 20px;
     height: 40px;
 }

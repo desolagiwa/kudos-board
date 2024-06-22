@@ -8,7 +8,6 @@ import CardListPage from './pages/CardListPage'
 
 function App() {
 
-
   return (
     <Router>
       <Routes>

@@ -3,20 +3,23 @@ import { useEffect } from 'react'
 import '../styles/BoardListPage.css'
 import BoardList from '../components/BoardList'
 import CreateBoard from '../components/CreateBoard'
+import { useNavigate } from 'react-router-dom'
 
 function BoardListPage() {
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [boardList, setBoardList] = useState([])
   const [error, setError] = useState(null);
   const [category, setCategory] = useState('')
-
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const navigate = useNavigate()
 
   const openCreateForm = () => {
     setShowCreateForm(!showCreateForm)
   }
 
- const  API_ENDPOINT = 'http://localhost:5000/boards'
 
+ const  API_ENDPOINT = 'http://localhost:5000/boards'
   const fetchBoardList = async () => {
     try {
       let url = API_ENDPOINT;
@@ -51,12 +54,49 @@ function BoardListPage() {
     console.log(setBoardList)
   };
 
+  const handleSearch = async () => {
+    const searchUrl = 'http://localhost:5000/boards/search';
+    console.log(searchQuery)
+    const temp = {"searchQuery": searchQuery};
+    try {
+      const response = await fetch(searchUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(temp)
+      });
+      if (!response.ok) {
+        throw new Error('Failed to complete search');
+      }
+      const data = await response.json();
+      console.log(data)
+      setSearchResults(data);
+
+      setError(null);
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+    }
+  };
+
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await handleSearch();
+      // console.log(searchResults);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-   <>
+   <div><div>
         <header>
           <h1>KUDOS BOARD</h1>
-          <form >
-            <input className='search-bar' type="text" placeholder="Search" />
+          <form onSubmit={handleSearchSubmit}>
+            <input className='search-bar' type="text" placeholder="Search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+            <button type='submit'>Search</button>
           </form>
         </header>
         <main>
@@ -71,10 +111,12 @@ function BoardListPage() {
           {showCreateForm &&(
             <CreateBoard addNewBoard={addNewBoard} fetchBoardList={fetchBoardList} />
           )}
-          {boardList !== null ? (
-              <>
-                <BoardList data={boardList} fetchBoardList={fetchBoardList}/>
-              </>
+            {boardList !== null ? (
+            searchResults.length > 0 ? (
+              <BoardList data={searchResults} fetchBoardList={fetchBoardList} />
+            ) : (
+              <BoardList data={boardList} fetchBoardList={fetchBoardList} />
+            )
             ) : (
               <div>Loading...</div>
             )}
@@ -82,7 +124,7 @@ function BoardListPage() {
         <footer>
 
         </footer>
-    </>
+    </div></div>
   )
 }
 

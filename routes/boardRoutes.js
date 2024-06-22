@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
       console.error(error)
       res.status(404).send('Board not found')
     }
-  })
+})
 
 router.post('/', async (req, res) => {
     const {title, description, category, image, author} = req.body
@@ -76,6 +76,26 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json({ error: 'Failed to delete board' })
     }
   })
+
+  router.post('/search', async (req, res) => {
+    const { searchQuery } = req.body;
+    try {
+      const results = await prisma.Board.findMany({
+        where: {
+          title: {
+            contains: searchQuery,
+            mode: 'insensitive'
+          },
+        },
+      });
+      res.json(results);
+    } catch (error) {
+      console.error('Search failed:', error);
+      res.status(500).send('Failed to perform search');
+    }
+  });
+
+
 
 
 router.use('/cards', cardRoutes)

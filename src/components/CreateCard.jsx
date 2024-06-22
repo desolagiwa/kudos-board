@@ -115,7 +115,7 @@ const CreateCard = ({addNewBoard ,boardId, fetchBoardData, boardData}) => {
             </label>
             {gifs.length > 0 && (
               <div className="gif-grid">
-                {gifs.map((gif) => (
+                {gifs.slice(0,22).map((gif) => (
                   <img
                     src={gif.images.original.url}
                     key={gif.id}

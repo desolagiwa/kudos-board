@@ -109,8 +109,8 @@ const CreateBoard = ({addNewBoard, fetchBoardList}) => {
               <button type='search' onClick={handleSearch}>Search</button>
             </label>
             {gifs.length > 0 && (
-              <div className="gif-grid">
-                {gifs.map((gif) => (
+              <div className="gif-grid" style={{columnGap:"2px"}}>
+                {gifs.slice(0,22).map((gif) => (
                   <img
                     src={gif.images.original.url}
                     key={gif.id}

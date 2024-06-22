@@ -8,9 +8,9 @@ const boardRoutes = require('./routes/boardRoutes')
 const port = process.env.port || 3000
 const { Prisma } = require('@prisma/client')
 
-app.use(express.json())
 
 app.use(cors())
+app.use(express.json())
 app.use('/boards', boardRoutes)
 
 
