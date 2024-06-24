@@ -17,10 +17,11 @@ const CreateCard = ({addNewBoard ,boardId, fetchBoardData, boardData}) => {
   const url = 'http://localhost:5000/boards/cards/' + boardId
 
   boardId = parseInt(boardId)
+  const apiKey = import.meta.env.VITE_API_KEY
 
   const fetchGifs = async () => {
     try {
-      const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=7PbJfYXavCnYa4eiAL5F4d2cNMGKJ4Sy&q=${searchKeyword}`);
+      const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchKeyword}`);
       const data = await response.json();
       setGifs(data.data);
     } catch (error) {
