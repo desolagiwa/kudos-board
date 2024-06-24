@@ -1,8 +1,9 @@
 import React from "react";
 import '../styles/Card.css';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Card = ({title,gif,description,upvotes, id, fetchBoardData, boardId}) => {
+const Card = ({title,gif,description,upvotes, id, author, fetchBoardData, boardId}) => {
   const [upvotesNum, setUpvotesNum] = useState(upvotes);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -57,6 +58,7 @@ const Card = ({title,gif,description,upvotes, id, fetchBoardData, boardId}) => {
       };
 
       const onUpvote = async (event) => {
+        console.log("description: ", description)
         event.preventDefault()
         await upvoteCard(id);
         fetchBoardData();
@@ -64,14 +66,20 @@ const Card = ({title,gif,description,upvotes, id, fetchBoardData, boardId}) => {
       if (!isVisible) {
         return null;
       }
+
+
     return (
         <div className="card">
             <img className='gif' src={gif} style={{width: "400px",height: "400px",}}/>
             <div className='title'>{title}</div>
+            <div className="author">by {author}</div>
             <div className='description'>{description}</div>
             <div><button className="upvote-btn" onClick={onUpvote}>⬆️</button>
             <p className='upvotes'>{upvotesNum}</p></div>
-            <button onClick={onDelete} className="delete-btn">delete</button>
+            <button onClick={onDelete} className="delete-btn">Delete 🗑️</button>
+            <Link to={`${boardId}/cards/${id}/comments`}>
+              <button className="comments">Comments 💬</button>
+            </Link>
         </div>
     )
 }

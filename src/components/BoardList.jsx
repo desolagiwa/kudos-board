@@ -10,7 +10,7 @@ const BoardList = ({data, fetchBoardList}) => {
     return (
         <div className="board-list">
             {data.map(board  => (
-              <Board key={board.id} title={board.title} description={board.rating} image={board.image} author={board.author} id={board.id} fetchBoardList={fetchBoardList}/>
+              <Board key={board.id} title={board.title} description={board.description} image={board.image} author={board.author} id={board.id} fetchBoardList={fetchBoardList}/>
             ))}
         </div>
     )

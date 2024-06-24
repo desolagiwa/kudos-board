@@ -18,3 +18,8 @@
 .description{
     color: darkgrey;
 }
+.comments{
+    padding:  5px 8px;
+    justify-self: end;
+    align-self: end;
+}

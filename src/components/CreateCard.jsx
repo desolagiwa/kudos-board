@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import '../styles/CreateCard.css'
 
 const CreateCard = ({addNewBoard ,boardId, fetchBoardData, boardData}) => {
   const [title, setTitle] = useState('')
   const [gif, setGif] = useState('')
   const [description, setDescription] = useState('')
   const [upvotes, setUpvotes] = useState(0)
+  const [author, setAuthor] = useState('')
   const [showForm, setShowForm] = useState(true);
   const [error, setError] = useState(null);
   const [newCard, setNewCard] = useState([])
@@ -64,12 +66,13 @@ const CreateCard = ({addNewBoard ,boardId, fetchBoardData, boardData}) => {
   }
 
   const handleClose = () =>{
-    document.querySelector('.new-board-form').style.display = 'none';
+    document.querySelector('.new-card-form').style.display = 'none';
+    fetchBoardData()
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newInfo = { title, description, gif: selectedGif, upvotes, boardId };
+    const newInfo = { title, description, gif: selectedGif, upvotes, boardId , author};
 
     try {
       const response = await fetchNewCardData(newInfo);
@@ -92,7 +95,7 @@ const CreateCard = ({addNewBoard ,boardId, fetchBoardData, boardData}) => {
 
 
   return (
-    <div className="new-board-form">
+    <div className="new-card-form">
       <button className="close-btn" onClick={handleClose}>X</button>
       <h2>Create a New Card</h2>
       <form onSubmit={handleSubmit}>
@@ -101,7 +104,11 @@ const CreateCard = ({addNewBoard ,boardId, fetchBoardData, boardData}) => {
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
         </label>
         <label>
-          Description:
+          Author:
+          <input value={author} onChange={(e) => setAuthor(e.target.value)} type="text"/>
+        </label>
+        <label>
+          Message:
           <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} required />
         </label>
         <label>

@@ -13,9 +13,10 @@ model Card {
   description String
   gif String
   upvotes Int
-  author String
+  author String @default("")
   board Board @relation(fields:[boardId], references:[id])
   boardId Int
+  comments Comment[]
 }
 model Board {
   id Int @id @default(autoincrement())
@@ -25,4 +26,11 @@ model Board {
   image String
   author String
   cards Card[]
+}
+model Comment {
+  id Int @id @default(autoincrement())
+  author String
+  message String
+  card Card @relation(fields:[cardId], references:[id])
+  cardId Int
 }

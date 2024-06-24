@@ -51,12 +51,10 @@ function BoardListPage() {
 
   const addNewBoard = (newBoard) => {
     setBoardList([...boardList, newBoard]);
-    console.log(setBoardList)
   };
 
   const handleSearch = async () => {
     const searchUrl = 'http://localhost:5000/boards/search';
-    console.log(searchQuery)
     const temp = {"searchQuery": searchQuery};
     try {
       const response = await fetch(searchUrl, {
@@ -70,7 +68,6 @@ function BoardListPage() {
         throw new Error('Failed to complete search');
       }
       const data = await response.json();
-      console.log(data)
       setSearchResults(data);
 
       setError(null);
@@ -84,7 +81,6 @@ function BoardListPage() {
     event.preventDefault();
     try {
       await handleSearch();
-      // console.log(searchResults);
     } catch (error) {
       console.error(error);
     }

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
+const commentRoutes = require('./commentRoutes')
 
 router.get('/:boardId', async (req, res) => {
     const boardId = parseInt(req.params.boardId)
@@ -81,5 +82,7 @@ router.delete('/:boardId/:cardId', async (req,res) => {
     })
     res.json(deletedCard)
 })
+
+router.use('/comments', commentRoutes)
 
 module.exports = router

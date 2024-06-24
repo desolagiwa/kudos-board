@@ -45,9 +45,9 @@ const CardListPage = () => {
     return (
             <>
                 <button onClick={openCreateForm}>Create New Card</button>
-                <div>{boardData && <CardList data={boardData} boardId={id} fetchBoardData={() =>{fetchBoardData}}/>}</div>
+                <div>{boardData && <CardList data={boardData} boardId={id} fetchBoardData={fetchBoardData}/>}</div>
                 {showCreateForm &&(
-            <CreateCard boardId={id} fetchBoardData={() =>{fetchBoardData}} boardData={boardData}/>
+            <CreateCard boardId={id} fetchBoardData={fetchBoardData} boardData={boardData}/>
           )}
             </>
     )
