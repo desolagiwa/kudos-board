@@ -40,8 +40,8 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
     - [ ]  Anonymous cards or cards by guest users should still be allowed.
   - [ ] Add a new filter option on the home page to display only the current user's boards.
   - [ ] Allow boards to be deleted only if they are owned by the user.
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [x] **Deployment**
+  - [x] Website is deployed via Render.
 - [x] **Comments**
   - [x] Users should be able to comment on cards.
 
@@ -57,6 +57,16 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
     </a>
   </div>
 
+### Updated
+  <div>
+    <a href="https://www.loom.com/share/8a3daefe25c748c08205c98ed0ee53ba">
+      <p>Kudos Board - 24 June 2024 - Watch Video</p>
+    </a>
+    <a href="https://www.loom.com/share/8a3daefe25c748c08205c98ed0ee53ba">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/8a3daefe25c748c08205c98ed0ee53ba-with-play.gif">
+    </a>
+  </div>
+
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
@@ -65,7 +75,7 @@ Not as much. I felt unprepared to work with Routes.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-I would have attempted stretch goarls, and fixed some bugs in my code.
+I would have fixed some small bugs in my code and done more of error handling.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
