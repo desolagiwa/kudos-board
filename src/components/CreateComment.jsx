@@ -6,7 +6,7 @@ const CreateComment = ({boardId, cardId, fetchComments}) => {
     const [message, setMessage] = useState('')
     const [newComment, setNewComment] = useState([])
     const [error, setError] = useState(null);
-    const url = `http://localhost:5000/boards/cards/comments/${boardId}/${cardId}`
+    const url = process.env.URL `/boards/cards/comments/${boardId}/${cardId}`
 
 
 

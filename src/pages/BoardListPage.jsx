@@ -19,7 +19,7 @@ function BoardListPage() {
   }
 
 
- const  API_ENDPOINT = 'http://localhost:5000/boards'
+ const  API_ENDPOINT = process.env.URL + '/boards'
   const fetchBoardList = async () => {
     try {
       let url = API_ENDPOINT;
@@ -54,7 +54,7 @@ function BoardListPage() {
   };
 
   const handleSearch = async () => {
-    const searchUrl = 'http://localhost:5000/boards/search';
+    const searchUrl = process.env.URL + '/boards/search';
     const temp = {"searchQuery": searchQuery};
     try {
       const response = await fetch(searchUrl, {

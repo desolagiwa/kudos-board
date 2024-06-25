@@ -8,7 +8,7 @@ const Comment = ({message, author, cardId, boardId,id, fetchComments}) => {
     const deleteComment = async (id) => {
         setIsVisible(false);
           try {
-            const response = await fetch(`http://localhost:5000/boards/cards/comments/${boardId}/${cardId}/${id}`, {
+            const response = await fetch(process.env.URL `/boards/cards/comments/${boardId}/${cardId}/${id}`, {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json'

@@ -17,7 +17,7 @@ const CommentListPage = ({}) => {
 
     const fetchComments = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/boards/cards/comments/${boardId}/${id}`, {
+          const response = await fetch(process.env.URL + `/boards/cards/comments/${boardId}/${id}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json'

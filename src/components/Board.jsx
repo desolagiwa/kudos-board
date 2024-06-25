@@ -11,7 +11,7 @@ const Board = ({title, description, image, author, id, fetchBoardList}) => {
 
     const deleteBoard = async (id) => {
         try {
-          const response = await fetch(`http://localhost:5000/boards/${id}`, {
+          const response = await fetch( process.env.URL + `/boards/${id}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json'

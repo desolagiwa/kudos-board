@@ -14,7 +14,7 @@ const CreateBoard = ({addNewBoard, fetchBoardList}) => {
   const [gifs, setGifs] = useState([]);
 
 
-  const url = 'http://localhost:5000/boards'
+  const url = process.env.URL + '/boards'
   const apiKey = import.meta.env.VITE_API_KEY
   const fetchGifs = async () => {
     try {

@@ -10,7 +10,7 @@ const Card = ({title,gif,description,upvotes, id, author, fetchBoardData, boardI
     const deleteCard = async (id) => {
       setIsVisible(false);
         try {
-          const response = await fetch(`http://localhost:5000/boards/cards/${boardId}/${id}`, {
+          const response = await fetch(process.env.URL + `/boards/cards/${boardId}/${id}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ const Card = ({title,gif,description,upvotes, id, author, fetchBoardData, boardI
     const upvoteCard = async (id) => {
         try {
           const response = await fetch(
-            `http://localhost:5000/boards/cards/${boardId}/${id}`,
+            process.env.URL + `/boards/cards/${boardId}/${id}`,
             {
               method: 'PATCH',
               headers: {

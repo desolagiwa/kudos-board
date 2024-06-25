@@ -14,7 +14,7 @@ const CreateCard = ({addNewBoard ,boardId, fetchBoardData, boardData}) => {
   const [gifs, setGifs] = useState([]);
   const [selectedGif, setSelectedGif] = useState(null);
 
-  const url = 'http://localhost:5000/boards/cards/' + boardId
+  const url = process.env.URL + '/boards/cards/' + boardId
 
   boardId = parseInt(boardId)
   const apiKey = import.meta.env.VITE_API_KEY

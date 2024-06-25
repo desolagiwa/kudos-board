@@ -11,7 +11,7 @@ const CardListPage = () => {
     const [showCreateForm, setShowCreateForm] = useState(false)
     const {id} = useParams()
 
-    let  url = 'http://localhost:5000/boards/cards/' + id
+    let  url = process.env.URL + '/boards/cards/' + id
 
     const openCreateForm = () => {
         setShowCreateForm(!showCreateForm)
